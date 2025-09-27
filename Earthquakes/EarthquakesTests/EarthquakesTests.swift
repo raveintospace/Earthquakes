@@ -21,5 +21,17 @@ struct EarthquakesTests {
         let expectedTime = Date(timeIntervalSince1970: expectedSeconds)
         #expect(quake.time == expectedTime)
     }
+    
+    @Test func geoJSONDecoderDecodesGeoJSON() throws {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .millisecondsSince1970
+        let decoded = try decoder.decode(GeoJSON.self, from: testQuakesData)
+        #expect(decoded.quakes.count == 6)
+        #expect(decoded.quakes[0].code == "73649170")
+        
+        let expectedSeconds = TimeInterval(1636129710550 / 1000.0)
+        let expectedTime = Date(timeIntervalSince1970: expectedSeconds)
+        #expect(decoded.quakes[0].time == expectedTime)
+    }
 
 }

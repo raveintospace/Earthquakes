@@ -23,7 +23,7 @@ struct GeoJSON: Decodable {
     
     init(from decoder: Decoder) throws {
         let rootContainer = try decoder.container(keyedBy: RootCodingKeys.self)
-        var featuresContainer = try rootContainer.nestedUnkeyedContainer(forKey: .features)
+        let featuresContainer = try rootContainer.nestedUnkeyedContainer(forKey: .features)
         
         while !featuresContainer.isAtEnd {
             let propertiesContainer = try decoder.container(keyedBy: FeatureCodingKeys.self)
@@ -36,7 +36,6 @@ struct GeoJSON: Decodable {
 }
 
 /*
- Json -> Features > Properties
- */
-
-// featuresContainer extracts quakes, one at a time. The decoder accesses the elements chronologically.
+ Json -> Features > Properties -> magnitude, place, features, code
+ featuresContainer extracts quakes, one at a time. The decoder accesses the elements chronologically.
+*/
