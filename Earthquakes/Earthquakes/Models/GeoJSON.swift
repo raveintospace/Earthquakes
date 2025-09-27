@@ -36,6 +36,6 @@ struct GeoJSON: Decodable {
 }
 
 /*
- Json -> Features > Properties -> magnitude, place, features, code
+ Json -> Features > Properties > [Quake] >magnitude, place, features, code
  featuresContainer extracts quakes, one at a time. The decoder accesses the elements chronologically.
 */
