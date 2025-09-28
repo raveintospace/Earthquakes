@@ -81,7 +81,7 @@ extension Quakes {
     func fetchQuakes() async {
         isLoading = true
         do {
-            try await provider.fetchQuackes()
+            try await provider.fetchQuakes()
         } catch {
             self.error = error as? QuakeError ?? .unexpectedError
             self.hasError = true

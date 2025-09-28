@@ -19,7 +19,7 @@ class QuakesProvider {
         self.client = client
     }
     
-    func fetchQuackes() async throws {
+    func fetchQuakes() async throws {
         let latestQuakes = try await client.quakes
         self.quakes = latestQuakes
     }
