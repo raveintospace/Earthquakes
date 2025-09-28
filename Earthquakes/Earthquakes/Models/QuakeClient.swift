@@ -31,5 +31,3 @@ struct QuakeClient {
         self.downloader = downloader
     }
 }
-
-// https://developer.apple.com/tutorials/app-dev-training/building-a-network-test-client - Section 3
