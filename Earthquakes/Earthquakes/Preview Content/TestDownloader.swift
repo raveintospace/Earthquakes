@@ -1,7 +1,7 @@
 //
 //  TestDownloader.swift
 //  Earthquakes
-//
+//  A test class to fake a network connection
 //  Created by Uri on 27/9/25.
 //
 

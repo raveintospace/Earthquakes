@@ -1,7 +1,7 @@
 //
 //  QuakesProvider.swift
 //  Earthquakes
-//
+//  A class to fetch data from the remote server and save it to the Core Data store
 //  Created by Uri on 28/9/25.
 //
 

@@ -1,7 +1,7 @@
 //
 //  QuakeClient.swift
 //  Earthquakes
-//
+//  A class to fetch and cache data from the remote server
 //  Created by Uri on 27/9/25.
 //
 
@@ -11,6 +11,7 @@ struct QuakeClient {
     
     private let downloader: any HTTPDataDownloader
     private let feedURL = URL(string: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")!
+    private let quakeCache: NSCache<NSString, CacheEntryObject> = NSCache()
     
     private var decoder: JSONDecoder = {
         let aDecoder = JSONDecoder()
