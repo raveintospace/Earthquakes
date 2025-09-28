@@ -55,7 +55,7 @@ actor QuakeClient {
         self.downloader = downloader
     }
     
-    /// Fetches and decodes the location
+    /// Fetches and decodes the location (from cache or from API)
     func quakeLocation(from url: URL) async throws -> QuakeLocation {
         if let cached = await quakeCache[url] {
             switch cached {
