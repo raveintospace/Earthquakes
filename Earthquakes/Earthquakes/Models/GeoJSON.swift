@@ -23,10 +23,12 @@ struct GeoJSON: Decodable {
     
     init(from decoder: Decoder) throws {
         let rootContainer = try decoder.container(keyedBy: RootCodingKeys.self)
-        let featuresContainer = try rootContainer.nestedUnkeyedContainer(forKey: .features)
+        
+        // Extracts quakes, one at a time
+        var featuresContainer = try rootContainer.nestedUnkeyedContainer(forKey: .features)
         
         while !featuresContainer.isAtEnd {
-            let propertiesContainer = try decoder.container(keyedBy: FeatureCodingKeys.self)
+            let propertiesContainer = try featuresContainer.nestedContainer(keyedBy: FeatureCodingKeys.self)
             
             if let properties = try? propertiesContainer.decode(Quake.self, forKey: .properties) {
                 quakes.append(properties)
