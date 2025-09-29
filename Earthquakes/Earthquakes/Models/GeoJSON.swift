@@ -22,12 +22,15 @@ struct GeoJSON: Decodable {
     private(set) var quakes: [Quake] = []
     
     init(from decoder: Decoder) throws {
+        
+        // Obtains the root container (main JSON object)
         let rootContainer = try decoder.container(keyedBy: RootCodingKeys.self)
         
         // Extracts quakes, one at a time
         var featuresContainer = try rootContainer.nestedUnkeyedContainer(forKey: .features)
         
         while !featuresContainer.isAtEnd {
+            // Obtains the container "properties"
             let propertiesContainer = try featuresContainer.nestedContainer(keyedBy: FeatureCodingKeys.self)
             
             if let properties = try? propertiesContainer.decode(Quake.self, forKey: .properties) {
@@ -39,5 +42,6 @@ struct GeoJSON: Decodable {
 
 /*
  Json -> Features > Properties > [Quake] >magnitude, place, features, code
- featuresContainer extracts quakes, one at a time. The decoder accesses the elements chronologically.
-*/
+
+ This is a Manual Navigation strategy, we use enum CodingKey instead of declaring struct Root - Feature & struct Feature - [Properties]
+ */
