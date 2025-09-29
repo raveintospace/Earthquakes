@@ -25,6 +25,8 @@ struct ToolbarStatus: View {
                     .foregroundStyle(Color.secondary)
             }
         }
+        .frame(maxWidth: .infinity)
+        .multilineTextAlignment(.center)
         .font(.caption)
     }
 }
